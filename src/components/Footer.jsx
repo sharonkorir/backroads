@@ -1,4 +1,5 @@
 import { pageLinks, socialLinks } from "../data";
+import SocialLink from "./SocialLink";
 const Footer = () => {
   return (
     <footer className="section footer">
@@ -16,19 +17,14 @@ const Footer = () => {
       </ul>
       <ul className="footer-icons">
         {socialLinks.map((social) => {
-          const { icon, id, href } = social;
           return (
-            <li key={id}>
-              <a href={href} target="_blank" className="footer-icon">
-                <i className={icon}></i>
-              </a>
-            </li>
+            <SocialLink key={social.id} {...social} itemClass="footer-icon" />
           );
         })}
       </ul>
       <p className="copyright">
         copyright &copy; Backroads travel tours company
-        <span id="date"></span> all rights reserved
+        <span id="date">{new Date().getFullYear()}</span> all rights reserved
       </p>
     </footer>
   );
